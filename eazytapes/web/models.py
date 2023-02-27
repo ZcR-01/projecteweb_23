@@ -5,10 +5,16 @@ from django.db import models
 
 class Bar(models.Model):
     name = models.CharField(max_length=200)
-
+    
+    def __str__(self) -> str:
+        return self.name
+    
 
 class Tapa(models.Model):
     name = models.CharField(max_length=200)
     bar = models.ForeignKey(Bar, on_delete=models.CASCADE) # Clau forana que apunta a bar, si es borra el bar tambe es borrara
     #la tapa
 
+    def __str__(self) -> str:
+        return self.name+" del "+self.bar.name
+    
